@@ -1,0 +1,73 @@
+.chess-square {
+    width: 12.5%;
+    height: 100%;
+    display: flex;
+    z-index: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.chess-piece {
+    height: 100%;
+    width: 100%;
+}
+
+.chess-square.selected {
+    filter: brightness(125%);
+}
+
+.chess-square.black {
+    background-color: #b58863;
+}
+
+.chess-square.black:hover {
+    background-color: #d8b48c;
+}
+
+.chess-square.white {
+    background-color: #f0d9b5;
+}
+
+.chess-square.white:hover {
+    /*slightly darker than #f0d9b5*/
+    background-color: #e6c8a3;
+}
+
+.chess-board {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    height: 25rem;
+    position: relative;
+    z-index: 0;
+}
+
+.chess-row {
+    display: flex;
+    height: 12.5%;
+    width: 100%;
+}
+
+.legal-move-no-piece {
+    background-color: black;
+    opacity: 0.2;
+    z-index: 1;
+    height: 30%;
+    width: 30%;
+    border-radius: 100%;
+    position: absolute;
+}
+
+.legal-move-with-piece {
+    background-color: black;
+    opacity: 0.2;
+    z-index: 1;
+    height: 90%;
+    width: 90%;
+    border-radius: 100%;
+    position: absolute;
+}
