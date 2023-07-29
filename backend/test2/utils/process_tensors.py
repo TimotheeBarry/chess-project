@@ -35,9 +35,9 @@ def transform_square_root_tensor(tensor, max_value=None):
     return tensor
 
 def reverse_transform_square_root_tensor(tensor, max_value=None):
-    tensor = tf.math.pow(tensor, 2)*tf.math.sign(tensor)
     if max_value is not None:
         tensor = tensor * max_value
+    tensor = tf.math.pow(tensor, 2)*tf.math.sign(tensor)
     return tensor
     
 

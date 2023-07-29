@@ -57,7 +57,7 @@ def generate_dataset_from_pgn_file(nb_pos:int, save_every:int=100, p=0.1, file_p
     done = False # to stop multi threading before the end of the generation
     input_array = np.zeros((save_every, shape[0], shape[1], shape[2]), dtype=np.int32)
     output_array = np.zeros((save_every,), dtype=np.float32)
-    position_index = 0
+    position_index, nb_games = 0, 0
 
     with open(file_path) as pgn:
         game = None
@@ -69,6 +69,7 @@ def generate_dataset_from_pgn_file(nb_pos:int, save_every:int=100, p=0.1, file_p
                 
             if game is None or game.is_end():
                 game = chess.pgn.read_game(pgn)
+                nb_games += 1
                 continue
             
             game = game.next()
@@ -92,5 +93,5 @@ def generate_dataset_from_pgn_file(nb_pos:int, save_every:int=100, p=0.1, file_p
                 save_dataset(input_array, output_array, save_dir)
                 input_array = np.zeros((save_every, shape[0], shape[1], shape[2]), dtype=np.int32)
                 output_array = np.zeros((save_every,), dtype=np.float32)
-                print(f'{position_index}/{nb_pos} saved to {save_dir}')
+                print(f'{position_index}/{nb_pos} from {nb_games} games saved to {save_dir}')
     

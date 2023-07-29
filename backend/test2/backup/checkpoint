@@ -1,2 +1,0 @@
-model_checkpoint_path: "loss=mse-layers=3-filters=32-batchsize=16-shape=888-try=01"
-all_model_checkpoint_paths: "loss=mse-layers=3-filters=32-batchsize=16-shape=888-try=01"
