@@ -24,4 +24,20 @@ def normalize_tensor(tensor, axis = 0):
     mini = tf.math.reduce_min(tensor, axis=axis, keepdims=True)
 
     abs_max = tf.math.maximum(tf.math.abs(maxi), tf.math.abs(mini))
+    print(abs_max)
     return tf.math.divide(tensor, abs_max)
+
+def transform_square_root_tensor(tensor, max_value=None):
+    tensor = tf.math.sqrt(tf.math.abs(tensor))*tf.math.sign(tensor)
+    if max_value is not None:
+        maxi = tf.math.reduce_max(tf.math.abs(tensor), axis=0, keepdims=True)
+        tensor =  tf.math.divide(tensor, maxi) * max_value
+    return tensor
+
+def reverse_transform_square_root_tensor(tensor, max_value=None):
+    tensor = tf.math.pow(tensor, 2)*tf.math.sign(tensor)
+    if max_value is not None:
+        tensor = tensor * max_value
+    return tensor
+    
+

@@ -10,9 +10,9 @@ def stockfish_evaluation(board, depth):
     engine.quit()
     return result
 
-def get_score(board, depth = 10):
+def get_score(board, depth = 10, mate_score = 10000):
     result = stockfish_evaluation(board, depth)
-    return result["score"].white().score(mate_score=10000)/100
+    return result["score"].white().score(mate_score=mate_score)/100
 
 def gest_best_move(board, depth):
     result = stockfish_evaluation(board, depth)
